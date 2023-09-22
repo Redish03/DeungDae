@@ -1,16 +1,23 @@
 package com.example.deungdae
 
 import android.app.Activity
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.splashscreen.SplashScreen
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import android.os.Handler
+import android.os.Looper
+import com.example.deungdae.databinding.ActivityMainBinding
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
+    val binding by lazy { ActivityMainBinding.inflate(layoutInflater)}
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen: SplashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_splash)
+        
+        Handler(Looper.getMainLooper()).postDelayed({
+            setContentView(binding.root)
+        }, 3000)
+//        val intent = Intent(this, ::class.java)
+
     }
 }
-
